@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#000000', // Pure Black
+                            gray: '#121212', // Off-Black
+                            light: '#ffffff', // Pure White
+                            accent: '#ffffff', // White Accent
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .bento-card {
+            transition: all 0.3s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-2px);
+            border-color: #ffffff;
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #666;
+        }
+
+        .code-font {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-white selection:text-black relative">
+
+    <!-- Interactive Background Canvas -->
+    <canvas id="ascii-canvas" class="fixed inset-0 z-0 opacity-20 pointer-events-none"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight">&lt;Meeday<span class="text-gray-500">/&gt;</span></a>
+
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#stack" class="hover:text-white transition-colors">Stack</a>
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="mailto:olamidebalogun56@gmail.com"
+                    class="text-white border-b border-transparent hover:border-white transition-all">Hire
+                    Me</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMenu()" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-black z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center gap-8 text-xl">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-400 hover:text-white">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <a href="#work" onclick="toggleMenu()">Work</a>
+        <a href="#process" onclick="toggleMenu()">Process</a>
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="mailto:olamidebalogun56@gmail.com" onclick="toggleMenu()"
+            class="text-white border-b border-white">Let's Talk</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative z-10 pt-40 pb-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div
+                class="inline-block px-3 py-1 mb-6 text-xs font-mono text-white bg-white/5 rounded-full border border-white/10">
+                &lt;div class="pixel-perfect"&gt;
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">
+                Turning creative designs<br>
+                into <span class="text-gray-500">interactive websites.</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed font-light">
+                I am a Frontend Developer specializing in building responsive, high-performance websites for agencies
+                and small businesses. I translate Figma to clean code.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="mailto:olamidebalogun56@gmail.com"
+                    class="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors text-center">
+                    Hire Me
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section (6-Grid) -->
+    <section id="projects" class="relative z-10 py-20 px-6 bg-[#050505]/90 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-4">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">Selected Websites</h2>
+                    <p class="text-gray-500">Recent builds and implementations.</p>
+                </div>
+                <span class="hidden md:block text-sm text-gray-500 font-mono">2025</span>
+            </div>
+
+            <!-- 6-Card Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Project 1 -->
+                <article
+                    class="group bg-brand-gray border border-white/10 rounded-xl overflow-hidden hover:border-white/50 transition-colors duration-300 flex flex-col">
+                    <div
+                        class="h-48 bg-[#1a1a1a] flex items-center justify-center text-gray-600 border-b border-white/5 relative overflow-hidden">
+                        <img src="images/synapse.png" alt="Synapse"
+                            class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Synapse</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">
+                            The first AI-native workspace that evolves with your team. Synapse turns chaotic workflows
+                            into a streamlined neural network of productivity.
+                        </p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">AI</span>
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">React</span>
+                            </div>
+                            <a href="https://synapseai-beta.vercel.app/" target="_blank"
+                                class="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-white transition-all">Visit
+                                &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article
+                    class="group bg-brand-gray border border-white/10 rounded-xl overflow-hidden hover:border-white/50 transition-colors duration-300 flex flex-col">
+                    <div
+                        class="h-48 bg-[#1a1a1a] flex items-center justify-center text-gray-600 border-b border-white/5 relative overflow-hidden">
+                        <img src="images/cyber-hamster.png" alt="Cyber $Hamster"
+                            class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Cyber $Hamster</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">
+                            Zero taxes. LP Burnt. Powered by pure chaos and sunflower seeds. The first hamster on the
+                            blockchain.
+                        </p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">Crypto</span>
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">Web3</span>
+                            </div>
+                            <a href="https://cyber-hamster.vercel.app/" target="_blank"
+                                class="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-white transition-all">Visit
+                                &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article
+                    class="group bg-brand-gray border border-white/10 rounded-xl overflow-hidden hover:border-white/50 transition-colors duration-300 flex flex-col">
+                    <div
+                        class="h-48 bg-[#1a1a1a] flex items-center justify-center text-gray-600 border-b border-white/5 relative overflow-hidden">
+                        <img src="images/homecare.png" alt="Homecare"
+                            class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Homecare</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">
+                            Expert in-home care, nursing, and companionship designed to help your loved ones maintain
+                            their independence.
+                        </p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">Healthcare</span>
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">Design</span>
+                            </div>
+                            <a href="https://health-website-one.vercel.app/" target="_blank"
+                                class="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-white transition-all">Visit
+                                &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article
+                    class="group bg-brand-gray border border-white/10 rounded-xl overflow-hidden hover:border-white/50 transition-colors duration-300 flex flex-col">
+                    <div
+                        class="h-48 bg-[#1a1a1a] flex items-center justify-center text-gray-600 border-b border-white/5 relative overflow-hidden">
+                        <img src="images/studentsave.png" alt="StudentSave"
+                            class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">StudentSave</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">
+                            The banking app built for campus life. Automatically save on textbooks and rent without
+                            thinking about it.
+                        </p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">Fintech</span>
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">Mobile</span>
+                            </div>
+                            <a href="https://student-save-eight.vercel.app/" target="_blank"
+                                class="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-white transition-all">Visit
+                                &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 5 -->
+                <article
+                    class="group bg-brand-gray border border-white/10 rounded-xl overflow-hidden hover:border-white/50 transition-colors duration-300 flex flex-col">
+                    <div
+                        class="h-48 bg-[#1a1a1a] flex items-center justify-center text-gray-600 border-b border-white/5 relative overflow-hidden">
+                        <img src="images/ksp.png" alt="KSP Performance"
+                            class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">KSP Performance</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">
+                            Transform your strength, health & confidence. Achieve fitness goals with expert coaching and
+                            community support.
+                        </p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">Fitness</span>
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">Web</span>
+                            </div>
+                            <a href="https://ksp-website.vercel.app/" target="_blank"
+                                class="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-white transition-all">Visit
+                                &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 6 -->
+                <article
+                    class="group bg-brand-gray border border-white/10 rounded-xl overflow-hidden hover:border-white/50 transition-colors duration-300 flex flex-col">
+                    <div
+                        class="h-48 bg-[#1a1a1a] flex items-center justify-center text-gray-600 border-b border-white/5 relative overflow-hidden">
+                        <img src="images/luminalens.png" alt="LuminaLens"
+                            class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">LuminaLens</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">
+                            Visual storytelling. Moments Captured. Memories Preserved. We specialize in crafting
+                            timeless imagery.
+                        </p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">Photography</span>
+                                <span
+                                    class="text-[10px] border border-white/20 px-2 py-1 text-gray-300 font-mono">Visuals</span>
+                            </div>
+                            <a href="https://photography-website-e1w1.vercel.app/" target="_blank"
+                                class="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-white transition-all">Visit
+                                &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Process Section -->
+    <section id="stack" class="relative z-10 py-20 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">Development Process</h2>
+                <p class="text-gray-400 mb-8 leading-relaxed font-light">
+                    I don't just write code; I build accessible, semantic, and fast websites. My workflow ensures the
+                    final product matches the design exactly.
+                </p>
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4 group">
+                        <span
+                            class="flex-shrink-0 w-8 h-8 border border-white/20 text-white flex items-center justify-center font-mono text-xs group-hover:bg-white group-hover:text-black transition-colors">01</span>
+                        <div>
+                            <h4 class="font-bold text-white">Design Analysis</h4>
+                            <p class="text-sm text-gray-500 mt-1">Reviewing Figma/Adobe XD files for layout, typography,
+                                and assets.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4 group">
+                        <span
+                            class="flex-shrink-0 w-8 h-8 border border-white/20 text-white flex items-center justify-center font-mono text-xs group-hover:bg-white group-hover:text-black transition-colors">02</span>
+                        <div>
+                            <h4 class="font-bold text-white">Semantic Markup</h4>
+                            <p class="text-sm text-gray-500 mt-1">Structuring the content with proper HTML5 tags for SEO
+                                and accessibility.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4 group">
+                        <span
+                            class="flex-shrink-0 w-8 h-8 border border-white/20 text-white flex items-center justify-center font-mono text-xs group-hover:bg-white group-hover:text-black transition-colors">03</span>
+                        <div>
+                            <h4 class="font-bold text-white">Responsive Styling</h4>
+                            <p class="text-sm text-gray-500 mt-1">Mobile-first CSS/Tailwind implementation ensuring it
+                                works on all devices.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4 group">
+                        <span
+                            class="flex-shrink-0 w-8 h-8 border border-white/20 text-white flex items-center justify-center font-mono text-xs group-hover:bg-white group-hover:text-black transition-colors">04</span>
+                        <div>
+                            <h4 class="font-bold text-white">Interaction & Polish</h4>
+                            <p class="text-sm text-gray-500 mt-1">Adding JavaScript for menus, sliders, and scroll
+                                animations.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="bg-[#0a0a0a] p-8 border border-white/10 backdrop-blur-sm bg-opacity-80">
+                <h3 class="text-xl font-bold mb-6">My Toolkit</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span
+                        class="px-3 py-2 bg-[#1a1a1a] text-xs text-gray-300 border border-white/5 hover:border-white transition-colors cursor-default">HTML5</span>
+                    <span
+                        class="px-3 py-2 bg-[#1a1a1a] text-xs text-gray-300 border border-white/5 hover:border-white transition-colors cursor-default">CSS3
+                        / SCSS</span>
+                    <span
+                        class="px-3 py-2 bg-white text-xs text-black border border-white font-bold cursor-default">Tailwind
+                        CSS</span>
+                    <span
+                        class="px-3 py-2 bg-[#1a1a1a] text-xs text-gray-300 border border-white/5 hover:border-white transition-colors cursor-default">JavaScript
+                    </span>
+                    <span
+                        class="px-3 py-2 bg-[#1a1a1a] text-xs text-gray-300 border border-white/5 hover:border-white transition-colors cursor-default">React</span>
+                    <span
+                        class="px-3 py-2 bg-[#1a1a1a] text-xs text-gray-300 border border-white/5 hover:border-white transition-colors cursor-default">Git
+                        / GitHub</span>
+                    <span
+                        class="px-3 py-2 bg-[#1a1a1a] text-xs text-gray-300 border border-white/5 hover:border-white transition-colors cursor-default">Antigravity</span>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-white/5">
+                    <h3 class="text-xl font-bold mb-4">Philosophy</h3>
+                    <blockquote class="text-gray-400 italic font-light">
+                        "A website should be as beautiful in the code editor as it is in the browser."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Footer Section -->
+    <section id="about" class="relative z-10 py-20 px-6 border-t border-white/10 bg-black">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">About Meeday</h2>
+            <div class="text-xl text-gray-400 leading-relaxed mb-10 font-light">
+                <p class="mb-6">
+
+                </p>
+                <p>
+                    I’m a Frontend Developer and UI/UX Designer focused on building clean, responsive websites. I bridge
+                    the gap between design and technical implementation, ensuring that your website looks exactly how it
+                    was designed, on every screen size.
+                </p>
+            </div>
+            <div class="flex justify-center gap-6">
+                <!-- Social Links -->
+                <a href="https://x.com/Meedayyy" target="_blank"
+                    class="text-gray-500 hover:text-white transition-colors uppercase text-xs tracking-widest font-bold">Twitter/X</a>
+                <a href="https://www.linkedin.com/in/meeday/" target="_blank"
+                    class="text-gray-500 hover:text-white transition-colors uppercase text-xs tracking-widest font-bold">LinkedIn</a>
+                <a href="mailto:olamidebalogun56@gmail.com"
+                    class="text-gray-500 hover:text-white transition-colors uppercase text-xs tracking-widest font-bold">Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Footer -->
+    <footer class="relative z-10 py-8 text-center text-xs text-gray-600 uppercase tracking-widest bg-black">
+        <p>&copy; 2025 Meeday. Built with curiosity.</p>
+    </footer>
+
+
+
+    <script>
+        // --- Interactive ASCII Canvas Script ---
+        const canvas = document.getElementById('ascii-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let columns;
+        const fontSize = 14;
+        const drops = [];
+        const chars = "0101010101XYZ#@";
+        let mouseX = -1000;
+        let mouseY = -1000;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            columns = Math.floor(width / fontSize);
+            drops.length = 0;
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.random() * -100;
+            }
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, width, height);
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+                const dist = Math.hypot(x - mouseX, y - mouseY);
+
+                if (dist < 100) {
+                    ctx.fillStyle = '#FFFFFF';
+                } else {
+                    ctx.fillStyle = '#222222';
+                }
+
+                ctx.fillText(text, x, y);
+
+                if (y > height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        draw();
+
+
+        // --- Mobile Menu Toggle ---
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const body = document.body;
+
+            if (menu.classList.contains('translate-x-full')) {
+                menu.classList.remove('translate-x-full');
+                body.classList.add('overflow-hidden');
+            } else {
+                menu.classList.add('translate-x-full');
+                body.classList.remove('overflow-hidden');
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
