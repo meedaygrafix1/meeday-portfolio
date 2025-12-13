@@ -136,7 +136,7 @@
                         </path>
                     </svg>
                 </button>
-                <button onclick="toggleMenu()" class="text-white focus:outline-none">
+                <button onclick="toggleMenu()" class="text-black dark:text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16">
@@ -149,17 +149,21 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu"
-        class="fixed inset-0 bg-black z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center gap-8 text-xl">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-gray-400 hover:text-white">
+        class="fixed inset-0 bg-white dark:bg-black z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center gap-8 text-xl text-black dark:text-white">
+        <button onclick="toggleMenu()"
+            class="absolute top-6 right-6 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
         </button>
-        <a href="#work" onclick="toggleMenu()">Work</a>
-        <a href="#process" onclick="toggleMenu()">Process</a>
-        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#projects" onclick="toggleMenu()"
+            class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Work</a>
+        <a href="#stack" onclick="toggleMenu()"
+            class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Stack</a>
+        <a href="#about" onclick="toggleMenu()"
+            class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">About</a>
         <a href="mailto:olamidebalogun56@gmail.com" onclick="toggleMenu()"
-            class="text-white border-b border-white">Let's Talk</a>
+            class="text-black dark:text-white border-b border-black dark:border-white">Let's Talk</a>
     </div>
 
     <!-- Hero Section -->
