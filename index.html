@@ -137,7 +137,8 @@
                     </svg>
                 </button>
                 <button onclick="toggleMenu()" class="text-black dark:text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-black dark:text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16">
                         </path>
@@ -204,6 +205,36 @@
                     <h2 class="text-3xl font-bold mb-16 text-black dark:text-white">Selected Work</h2>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                        <!-- Connect 4 Neo -->
+                        <article
+                            class="group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
+                            <div
+                                class="h-48 bg-gray-200 dark:bg-[#1a1a1a] flex items-center justify-center text-gray-400 dark:text-gray-600 border-b border-black/5 dark:border-white/5 relative overflow-hidden group">
+                                <img src="images/connect4.png" alt="Connect 4 Neo"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div
+                                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-lg font-bold text-black dark:text-white mb-2">Connect 4 Neo</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">
+                                    Challenge friends or AI in this classic strategy game with a modern vibe.
+                                </p>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex gap-2">
+                                        <span
+                                            class="text-[10px] border border-black/10 dark:border-white/20 px-2 py-1 text-gray-500 dark:text-gray-300 font-mono">Game</span>
+                                        <span
+                                            class="text-[10px] border border-black/10 dark:border-white/20 px-2 py-1 text-gray-500 dark:text-gray-300 font-mono">React</span>
+                                    </div>
+                                    <a href="https://connect-4-psi.vercel.app/" target="_blank"
+                                        class="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-black dark:group-hover:border-white text-black dark:text-white transition-all">Visit
+                                        &rarr;</a>
+                                </div>
+                            </div>
+                        </article>
 
                         <!-- Synapse -->
                         <article
