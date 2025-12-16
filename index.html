@@ -89,19 +89,12 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
-        /* Hidden cards for See More functionality */
-        .hidden-card {
-            display: none;
-            opacity: 0;
-            transform: translateY(20px);
+        /* Animation for See More functionality */
+        .animate-fadeIn {
+            animation: fadeIn 0.4s ease forwards;
         }
 
-        .hidden-card.show {
-            display: flex;
-            animation: fadeInUp 0.4s ease forwards;
-        }
-
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -376,14 +369,32 @@
                                     </div>
                                     <a href="https://cyber-hamster.vercel.app/" target="_blank"
                                         class="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-black dark:group-hover:border-white text-black dark:text-white transition-all">Visit
-                                        &rarr;</a>
                                 </div>
                             </div>
                         </article>
 
+                    </div>
+
+                    <!-- See More Button -->
+                    <div class="flex justify-center mt-6">
+                        <button id="see-more-btn"
+                            class="px-8 py-4 bg-transparent border border-black/20 dark:border-white/20 text-black dark:text-white font-bold rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 flex items-center gap-2">
+                            <span id="see-more-text">See More</span>
+                            <svg id="see-more-icon" class="w-4 h-4 transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Hidden Projects Grid -->
+                    <div id="hidden-projects-grid"
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 hidden">
+
                         <!-- Homecare -->
                         <article
-                            class="project-card hidden-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
+                            class="project-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
                             <div
                                 class="h-48 bg-gray-200 dark:bg-[#1a1a1a] flex items-center justify-center text-gray-400 dark:text-gray-600 border-b border-black/5 dark:border-white/5 relative overflow-hidden group">
                                 <img src="images/homecare.png" alt="Homecare Project"
@@ -414,7 +425,7 @@
 
                         <!-- StudentSave -->
                         <article
-                            class="project-card hidden-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
+                            class="project-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
                             <div
                                 class="h-48 bg-gray-200 dark:bg-[#1a1a1a] flex items-center justify-center text-gray-400 dark:text-gray-600 border-b border-black/5 dark:border-white/5 relative overflow-hidden group">
                                 <img src="images/studentsave.png" alt="StudentSave Project"
@@ -445,7 +456,7 @@
 
                         <!-- KSP Performance -->
                         <article
-                            class="project-card hidden-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
+                            class="project-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
                             <div
                                 class="h-48 bg-gray-200 dark:bg-[#1a1a1a] flex items-center justify-center text-gray-400 dark:text-gray-600 border-b border-black/5 dark:border-white/5 relative overflow-hidden group">
                                 <img src="images/ksp.png" alt="KSP Performance Project"
@@ -475,7 +486,7 @@
 
                         <!-- LuminaLens -->
                         <article
-                            class="project-card hidden-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
+                            class="project-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
                             <div
                                 class="h-48 bg-gray-200 dark:bg-[#1a1a1a] flex items-center justify-center text-gray-400 dark:text-gray-600 border-b border-black/5 dark:border-white/5 relative overflow-hidden group">
                                 <img src="images/luminalens.png" alt="LuminaLens Project"
@@ -505,7 +516,7 @@
 
                         <!-- Iveagh Medical Clinic -->
                         <article
-                            class="project-card hidden-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
+                            class="project-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
                             <div
                                 class="h-48 bg-gray-200 dark:bg-[#1a1a1a] flex items-center justify-center text-gray-400 dark:text-gray-600 border-b border-black/5 dark:border-white/5 relative overflow-hidden group">
                                 <img src="images/iveagh-medicals.png" alt="Iveagh Medical Clinic"
@@ -534,19 +545,6 @@
                             </div>
                         </article>
 
-                    </div>
-
-                    <!-- See More Button -->
-                    <div class="flex justify-center mt-6">
-                        <button id="see-more-btn"
-                            class="px-8 py-4 bg-transparent border border-black/20 dark:border-white/20 text-black dark:text-white font-bold rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 flex items-center gap-2">
-                            <span id="see-more-text">See More</span>
-                            <svg id="see-more-icon" class="w-4 h-4 transition-transform duration-300" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </section>
@@ -800,28 +798,20 @@
                 const seeMoreBtn = document.getElementById('see-more-btn');
                 const seeMoreText = document.getElementById('see-more-text');
                 const seeMoreIcon = document.getElementById('see-more-icon');
-                const hiddenCards = document.querySelectorAll('.hidden-card');
+                const hiddenProjectsGrid = document.getElementById('hidden-projects-grid');
                 let isExpanded = false;
 
                 seeMoreBtn.addEventListener('click', () => {
                     isExpanded = !isExpanded;
 
-                    hiddenCards.forEach((card, index) => {
-                        if (isExpanded) {
-                            // Stagger the animation for a nice effect
-                            setTimeout(() => {
-                                card.classList.add('show');
-                            }, index * 100);
-                        } else {
-                            card.classList.remove('show');
-                        }
-                    });
-
-                    // Update button text and icon
                     if (isExpanded) {
+                        hiddenProjectsGrid.classList.remove('hidden');
+                        hiddenProjectsGrid.classList.add('animate-fadeIn');
                         seeMoreText.textContent = 'See Less';
                         seeMoreIcon.style.transform = 'rotate(180deg)';
                     } else {
+                        hiddenProjectsGrid.classList.add('hidden');
+                        hiddenProjectsGrid.classList.remove('animate-fadeIn');
                         seeMoreText.textContent = 'See More';
                         seeMoreIcon.style.transform = 'rotate(0deg)';
                     }
