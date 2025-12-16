@@ -799,7 +799,9 @@
                 const seeMoreBtn = document.getElementById('see-more-btn');
                 const seeMoreText = document.getElementById('see-more-text');
                 const seeMoreIcon = document.getElementById('see-more-icon');
+                const seeMoreContainer = seeMoreBtn.parentElement;
                 const hiddenProjectsGrid = document.getElementById('hidden-projects-grid');
+                const projectsContainer = hiddenProjectsGrid.parentElement;
                 let isExpanded = false;
 
                 seeMoreBtn.addEventListener('click', () => {
@@ -810,11 +812,15 @@
                         hiddenProjectsGrid.classList.add('animate-fadeIn');
                         seeMoreText.textContent = 'See Less';
                         seeMoreIcon.style.transform = 'rotate(180deg)';
+                        // Move button after hidden grid
+                        projectsContainer.appendChild(seeMoreContainer);
                     } else {
                         hiddenProjectsGrid.classList.add('hidden');
                         hiddenProjectsGrid.classList.remove('animate-fadeIn');
                         seeMoreText.textContent = 'See More';
                         seeMoreIcon.style.transform = 'rotate(0deg)';
+                        // Move button back before hidden grid
+                        projectsContainer.insertBefore(seeMoreContainer, hiddenProjectsGrid);
                     }
                 });
 
