@@ -105,11 +105,90 @@
                 transform: translateY(0);
             }
         }
+
+        /* Loading Screen Styles */
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+        }
+
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            position: relative;
+            text-align: center;
+        }
+
+        .loader-percentage {
+            font-size: 8rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .loader-bar-container {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        #loader-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: #ffffff;
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .loader-text {
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+        }
+
+        /* Prevent scroll on load */
+        body.loading {
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body
-    class="font-sans antialiased selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black relative bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+    class="font-sans antialiased selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black relative bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 loading">
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="loader-content">
+            <div id="loader-percentage" class="loader-percentage">0</div>
+            <div class="loader-bar-container">
+                <div id="loader-bar"></div>
+            </div>
+            <p class="loader-text">Initializing Portfolio</p>
+        </div>
+    </div>
 
     <!-- Interactive Background Canvas -->
     <canvas id="ascii-canvas" class="fixed inset-0 z-0 opacity-10 dark:opacity-20 pointer-events-none"></canvas>
@@ -681,6 +760,34 @@
 
 
             <script>
+                // --- Loading Screen Logic ---
+                const loader = document.getElementById('loader');
+                const loaderPercentage = document.getElementById('loader-percentage');
+                const loaderBar = document.getElementById('loader-bar');
+                let progress = 0;
+
+                function updateLoader() {
+                    const interval = setInterval(() => {
+                        progress += Math.floor(Math.random() * 5) + 1; // Random increment
+
+                        if (progress >= 100) {
+                            progress = 100;
+                            clearInterval(interval);
+
+                            setTimeout(() => {
+                                loader.classList.add('hidden');
+                                document.body.classList.remove('loading');
+                            }, 500); // Small delay before hiding
+                        }
+
+                        loaderPercentage.textContent = progress;
+                        loaderBar.style.width = progress + '%';
+                    }, 30); // Speed of update
+                }
+
+                // Start loading simulation
+                updateLoader();
+
                 // --- Interactive ASCII Canvas Script ---
                 const canvas = document.getElementById('ascii-canvas');
                 const ctx = canvas.getContext('2d');
