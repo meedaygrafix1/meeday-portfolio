@@ -173,6 +173,27 @@
         body.loading {
             overflow: hidden;
         }
+
+        /* Typewriter Cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            animation: blink 0.8s step-end infinite;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                background-color: transparent;
+            }
+
+            50% {
+                background-color: currentColor;
+            }
+        }
     </style>
 </head>
 
@@ -272,7 +293,8 @@
             </div>
             <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight text-black dark:text-white">
                 Turning creative designs<br>
-                into <span class="text-gray-500">interactive websites.</span>
+                into <span id="typewriter" class="text-gray-500"></span><span
+                    class="typewriter-cursor text-gray-400 h-[1em]"></span>
             </h1>
             <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mb-10 leading-relaxed font-light">
                 I am a Frontend Developer specializing in building responsive, high-performance websites for agencies
@@ -930,6 +952,58 @@
                         projectsContainer.insertBefore(seeMoreContainer, hiddenProjectsGrid);
                     }
                 });
+
+
+                // --- Typewriter Effect ---
+                const typewriterElement = document.getElementById('typewriter');
+                const phrases = [
+                    'interactive websites.',
+                    'pixel-perfect UIs.',
+                    'dynamic experiences.',
+                    'clean code bases.'
+                ];
+                let phraseIndex = 0;
+                let characterIndex = 0;
+                let isDeleting = false;
+                let typingSpeed = 100;
+
+                function type() {
+                    const currentPhrase = phrases[phraseIndex];
+
+                    if (isDeleting) {
+                        typewriterElement.textContent = currentPhrase.substring(0, characterIndex - 1);
+                        characterIndex--;
+                        typingSpeed = 50;
+                    } else {
+                        typewriterElement.textContent = currentPhrase.substring(0, characterIndex + 1);
+                        characterIndex++;
+                        typingSpeed = 100;
+                    }
+
+                    if (!isDeleting && characterIndex === currentPhrase.length) {
+                        typingSpeed = 2000; // Pause at end
+                        isDeleting = true;
+                    } else if (isDeleting && characterIndex === 0) {
+                        isDeleting = false;
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        typingSpeed = 500; // Pause before next phrase
+                    }
+
+                    setTimeout(type, typingSpeed);
+                }
+
+                // Start typewriter after loader is hidden
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                            if (loader.classList.contains('hidden')) {
+                                setTimeout(type, 500);
+                                observer.disconnect();
+                            }
+                        }
+                    });
+                });
+                observer.observe(loader, { attributes: true });
 
 
             </script>
