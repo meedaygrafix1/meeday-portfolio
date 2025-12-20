@@ -768,7 +768,7 @@
 
                 function updateLoader() {
                     const interval = setInterval(() => {
-                        progress += Math.floor(Math.random() * 5) + 1; // Random increment
+                        progress += Math.floor(Math.random() * 2) + 1; // Smaller increment: 1 or 2
 
                         if (progress >= 100) {
                             progress = 100;
@@ -782,7 +782,7 @@
 
                         loaderPercentage.textContent = progress;
                         loaderBar.style.width = progress + '%';
-                    }, 30); // Speed of update
+                    }, 60); // Slower interval: 60ms
                 }
 
                 // Start loading simulation
