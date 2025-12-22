@@ -324,6 +324,36 @@
 
                     <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
+                        <!-- Word Scramble -->
+                        <article
+                            class="project-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
+                            <div
+                                class="h-48 bg-gray-200 dark:bg-[#1a1a1a] flex items-center justify-center text-gray-400 dark:text-gray-600 border-b border-black/5 dark:border-white/5 relative overflow-hidden group">
+                                <img src="images/word-scramble.png" alt="Word Scramble"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div
+                                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-lg font-bold text-black dark:text-white mb-2">Word Scramble</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">
+                                    Unjumble the Fun! A premium educational word game to test your vocabulary.
+                                </p>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex gap-2">
+                                        <span
+                                            class="text-[10px] border border-black/10 dark:border-white/20 px-2 py-1 text-gray-500 dark:text-gray-300 font-mono">Game</span>
+                                        <span
+                                            class="text-[10px] border border-black/10 dark:border-white/20 px-2 py-1 text-gray-500 dark:text-gray-300 font-mono">JS</span>
+                                    </div>
+                                    <a href="https://word-scramble-hcx7.vercel.app/" target="_blank"
+                                        class="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-black dark:group-hover:border-white text-black dark:text-white transition-all">Visit
+                                        &rarr;</a>
+                                </div>
+                            </div>
+                        </article>
+
                         <!-- VectorIT -->
                         <article
                             class="project-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
@@ -475,6 +505,26 @@
                             </div>
                         </article>
 
+
+                    </div>
+
+                    <!-- See More Button -->
+                    <div class="flex justify-center mt-6">
+                        <button id="see-more-btn"
+                            class="px-8 py-4 bg-transparent border border-black/20 dark:border-white/20 text-black dark:text-white font-bold rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 flex items-center gap-2">
+                            <span id="see-more-text">See More</span>
+                            <svg id="see-more-icon" class="w-4 h-4 transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Hidden Projects Grid -->
+                    <div id="hidden-projects-grid"
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 hidden">
+
                         <!-- Homecare -->
                         <article
                             class="project-card group bg-gray-50 dark:bg-brand-gray border border-black/5 dark:border-white/10 rounded-xl overflow-hidden hover:border-black/20 dark:hover:border-white/50 transition-colors duration-300 flex flex-col">
@@ -505,25 +555,6 @@
                                 </div>
                             </div>
                         </article>
-
-                    </div>
-
-                    <!-- See More Button -->
-                    <div class="flex justify-center mt-6">
-                        <button id="see-more-btn"
-                            class="px-8 py-4 bg-transparent border border-black/20 dark:border-white/20 text-black dark:text-white font-bold rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 flex items-center gap-2">
-                            <span id="see-more-text">See More</span>
-                            <svg id="see-more-icon" class="w-4 h-4 transition-transform duration-300" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <!-- Hidden Projects Grid -->
-                    <div id="hidden-projects-grid"
-                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 hidden">
 
                         <!-- StudentSave -->
                         <article
